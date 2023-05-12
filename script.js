@@ -7,6 +7,7 @@ const guessInput = document.querySelector(".guess");
 const messageEl = document.querySelector(".message");
 const score = document.querySelector('.score');
 const highestScore = document.querySelector('.high_score');
+const guess = document.querySelector(".guesss");
 // Selecting all btns
 const btnReset = document.querySelector(".reset");
 const btnCheck = document.querySelector(".check");
@@ -41,4 +42,19 @@ let userNumber = +guessInput.value;
     container.style.backgroundColor = 'green'
     highestScore.textContent = userScore
   }
+  if (userScore === 0) {
+    guess.textContent = "Game Over"
+    container.style.backgroundColor = 'red'
+  }
 });
+
+btnReset.addEventListener('click', function() {
+  userScore = 20
+  score.textContent = userScore
+  guessInput.value = ''
+  secretNumberEl.textContent = '?'
+  container.style.backgroundColor = 'black'
+  messageEl.textContent = 'Start guessing...'
+  secretNumber = Math.trunc(Math.random() * 20) + 1
+})
+
